@@ -59,21 +59,19 @@ instance.prototype.config_fields = function () {
 	var self = this;
 	return [
 		{
-			type:  'text',
-			id:    'info',
-			width: 12,
-			label: 'Information',
-			value: 'This module controls an itac IP2CC device by <a href="https://www.globalcache.com/products/itach/ip2ccspecs/" target="_new">Global Cache</a>.'
-		},
-	]
-	return [
-		{
 			type: 'textinput',
 			id: 'host',
 			label: 'Device IP',
 			width: 12,
 			regex: self.REGEX_IP
 		},
+		{
+			type:  'text',
+			id:    'info',
+			width: 12,
+			label: 'Information',
+			value: 'This module controls an itac IP2CC device by <a href="https://www.globalcache.com/products/itach/ip2ccspecs/" target="_new">Global Cache</a>.'
+		}
 	]
 };
 
@@ -92,11 +90,11 @@ instance.prototype.destroy = function() {
 instance.prototype.actions = function(system) {
 	var self = this;
 	self.system.emit('instance_actions', self.id, {
-		'ccOneOn': { label: 'Contact Closure 1 On' },
-		'ccTwoOn': { label: 'Contact Closure 2 On' },
-		'ccThreeOn': { label: 'Contact Closure 3 On' },
-		'ccOneOff': { label: 'Contact Closure 1 Off' },
-		'ccTwoOff': { label: 'Contact Closure 2 Off' },
+		'ccOneOn':    { label: 'Contact Closure 1 On' },
+		'ccTwoOn':    { label: 'Contact Closure 2 On' },
+		'ccThreeOn':  { label: 'Contact Closure 3 On' },
+		'ccOneOff':   { label: 'Contact Closure 1 Off' },
+		'ccTwoOff':   { label: 'Contact Closure 2 Off' },
 		'ccThreeOff': { label: 'Contact Closure 3 Off' },
 	});
 }
