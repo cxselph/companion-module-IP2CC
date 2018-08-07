@@ -90,14 +90,32 @@ instance.prototype.destroy = function() {
 instance.prototype.actions = function(system) {
 	var self = this;
 	self.system.emit('instance_actions', self.id, {
-		'ccOneOn':    { label: 'Contact Closure 1 On' },
-		'ccTwoOn':    { label: 'Contact Closure 2 On' },
-		'ccThreeOn':  { label: 'Contact Closure 3 On' },
-		'ccOneOff':   { label: 'Contact Closure 1 Off' },
-		'ccTwoOff':   { label: 'Contact Closure 2 Off' },
-		'ccThreeOff': { label: 'Contact Closure 3 Off' },
+		'portSet':    {
+			label: 'Choose port and state',
+			options: [
+					{
+						type:   'dropdown',
+						label:  'Choose Port',
+						id:     'portNum',
+						choices:	[
+							{ id: '1,',		label: 'Port 1' },
+							{ id: '2,',		label: 'Port 2' },
+							{ id: '3,',		label: 'Port 3' }
+						]
+					},
+					{
+						type:   'dropdown',
+						label:  'Set On or Off',
+						id:     'setPort',
+						choices:	[
+							{ id: '1',		label: 'Turn On (Close)' },
+							{ id: '0',		label: 'Turn Off (Open)' }
+						]
+					},
+				]
+		}
 	});
-}
+};
 
 instance.prototype.action = function(action) {
 	var self = this;
@@ -106,28 +124,8 @@ instance.prototype.action = function(action) {
 
 	switch (action.action) {
 
-		case 'ccOneOn':
-			cmd += '1,1';
-			break;
-
-		case 'ccTwoOn':
-			cmd += '2,1';
-			break;
-
-		case 'ccThreeOn':
-			cmd += '3,1';
-			break;
-
-		case 'ccOneOff':
-			cmd += '1,0';
-			break;
-
-		case 'ccTwoOff':
-			cmd += '2,0';
-			break;
-
-		case 'ccThreeOff':
-			cmd += '3,0';
+		case 'portSet':
+			cmd += opt.portNum + opt.setPort;
 			break;
 
 	}
@@ -138,6 +136,7 @@ instance.prototype.action = function(action) {
 
 		if (self.socket !== undefined && self.socket.connected) {
 			self.socket.send(cmd + "\r\n");
+
 		} else {
 			debug('Socket not connected :(');
 		}
