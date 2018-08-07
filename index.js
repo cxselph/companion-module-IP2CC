@@ -59,8 +59,8 @@ instance.prototype.config_fields = function () {
 	var self = this;
 	return [
 		{
-			type: 'textinput',
-			id: 'host',
+			type:  'textinput',
+			id:    'host',
 			label: 'Device IP',
 			width: 12,
 			regex: self.REGEX_IP
@@ -112,7 +112,7 @@ instance.prototype.actions = function(system) {
 							{ id: '0',		label: 'Turn Off (Open)' }
 						]
 					},
-				]
+			]
 		}
 	});
 };
