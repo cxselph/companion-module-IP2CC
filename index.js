@@ -150,7 +150,7 @@ instance.prototype.action = function(action) {
 
 instance.module_info = {
 	label: 'Global Cache - iTach IP2CC',
-	id: 'gc-itac-cc',
+	id: 'globalcache-itac-cc',
 	version: '0.0.1'
 };
 
