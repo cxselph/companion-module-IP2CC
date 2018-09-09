@@ -94,10 +94,11 @@ instance.prototype.actions = function(system) {
 			label: 'Choose port and state',
 			options: [
 					{
-						type:   'dropdown',
-						label:  'Choose Port',
-						id:     'portNum',
-						width:  12,
+						type:    'dropdown',
+						label:   'Choose Port',
+						id:      'portNum',
+						width:   12,
+						default: '1,',
 						choices:	[
 							{ id: '1,',		label: 'Port 1' },
 							{ id: '2,',		label: 'Port 2' },
@@ -105,10 +106,11 @@ instance.prototype.actions = function(system) {
 						]
 					},
 					{
-						type:   'dropdown',
-						label:  'Set On or Off',
-						id:     'setPort',
-						width:  12,						
+						type:    'dropdown',
+						label:   'Set On or Off',
+						id:      'setPort',
+						width:   12,
+						default: '1',
 						choices:	[
 							{ id: '1',		label: 'Turn On (Close)' },
 							{ id: '0',		label: 'Turn Off (Open)' }
