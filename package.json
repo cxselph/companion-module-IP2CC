@@ -1,7 +1,7 @@
 {
   "name": "globalcache-itac-cc",
   "version": "0.0.1",
-  "description": "",
+  "description": "Companion Module for Global Cache IP to Contact Closure device.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
