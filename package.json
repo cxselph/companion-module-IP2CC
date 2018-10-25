@@ -1,6 +1,6 @@
 {
   "name": "globalcache-itac-cc",
-  "version": "0.0.1",
+  "version": "1.2.0",
   "description": "Companion Module for Global Cache IP to Contact Closure device.",
   "main": "index.js",
   "scripts": {
