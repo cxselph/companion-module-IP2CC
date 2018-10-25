@@ -283,13 +283,6 @@ instance.prototype.action = function(action) {
 
 	debug('action():', action);
 
-
-};
-
-instance.module_info = {
-	label: 'Global Cache - iTach IP2CC',
-	id: 'globalcache-itac-cc',
-	version: '1.2.0'
 };
 
 instance_skel.extendedBy(instance);
