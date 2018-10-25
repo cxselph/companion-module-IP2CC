@@ -10,6 +10,7 @@ function instance(system, id, config) {
 	instance_skel.apply(this, arguments);
 
 	self.actions(); // export actions
+	self.init_presets();
 
 	return self;
 }
@@ -19,6 +20,7 @@ instance.prototype.updateConfig = function(config) {
 
 	self.config = config;
 	self.init_tcp();
+	self.init_presets();
 };
 
 instance.prototype.init = function() {
@@ -28,7 +30,7 @@ instance.prototype.init = function() {
 	log = self.log;
 
 	self.status(self.STATE_UNKNOWN);
-
+	self.init_presets();
 	self.init_tcp();
 };
 
@@ -86,6 +88,138 @@ instance.prototype.destroy = function() {
 	debug("destroy", self.id);;
 };
 
+instance.prototype.init_presets = function () {
+	var self = this;
+	var presets = [];
+
+		presets.push({
+			category: 'Port 1',
+			label: 'Close',
+			bank: {
+				style: 'text',
+				text: 'PORT 1\\nCLOSE',
+				size: '14',
+				color: '16777215',
+				bgcolor: 0
+			},
+			actions: [
+				{
+					action: 'portSet',
+					options: {
+						portNum: '1,',
+						setPort: '1'
+					}
+				}
+			]
+		});
+
+		presets.push({
+			category: 'Port 1',
+			label: 'Open',
+			bank: {
+				style: 'text',
+				text: 'PORT 1\\nOPEN',
+				size: '14',
+				color: '16777215',
+				bgcolor: 0
+			},
+			actions: [
+				{
+					action: 'portSet',
+					options: {
+						portNum: '1,',
+						setPort: '0'
+					}
+				}
+			]
+		});
+
+		presets.push({
+			category: 'Port 2',
+			label: 'Close',
+			bank: {
+				style: 'text',
+				text: 'PORT 2\\nCLOSE',
+				size: '14',
+				color: '16777215',
+				bgcolor: 0
+			},
+			actions: [
+				{
+					action: 'portSet',
+					options: {
+						portNum: '2,',
+						setPort: '1'
+					}
+				}
+			]
+		});
+
+		presets.push({
+			category: 'Port 2',
+			label: 'Open',
+			bank: {
+				style: 'text',
+				text: 'PORT 2\\nOPEN',
+				size: '14',
+				color: '16777215',
+				bgcolor: 0
+			},
+			actions: [
+				{
+					action: 'portSet',
+					options: {
+						portNum: '2,',
+						setPort: '0'
+					}
+				}
+			]
+		});
+
+		presets.push({
+			category: 'Port 3',
+			label: 'Close',
+			bank: {
+				style: 'text',
+				text: 'PORT 3\\nCLOSE',
+				size: '14',
+				color: '16777215',
+				bgcolor: 0
+			},
+			actions: [
+				{
+					action: 'portSet',
+					options: {
+						portNum: '3,',
+						setPort: '1'
+					}
+				}
+			]
+		});
+
+		presets.push({
+			category: 'Port 3',
+			label: 'Open',
+			bank: {
+				style: 'text',
+				text: 'PORT 3\\nOPEN',
+				size: '14',
+				color: '16777215',
+				bgcolor: 0
+			},
+			actions: [
+				{
+					action: 'portSet',
+					options: {
+						portNum: '3,',
+						setPort: '0'
+					}
+				}
+			]
+		});
+
+	self.setPresetDefinitions(presets);
+}
 
 instance.prototype.actions = function(system) {
 	var self = this;
@@ -155,7 +289,7 @@ instance.prototype.action = function(action) {
 instance.module_info = {
 	label: 'Global Cache - iTach IP2CC',
 	id: 'globalcache-itac-cc',
-	version: '0.0.1'
+	version: '1.2.0'
 };
 
 instance_skel.extendedBy(instance);
